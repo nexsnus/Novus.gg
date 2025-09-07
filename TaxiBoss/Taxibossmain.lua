@@ -529,3 +529,48 @@ local tbat = tbtbaft:CreateToggle({
         end
     end
 }, "tbat_debug")
+local tbatt = tbtbaft:CreateToggle({
+    Name = "Auto Time Trials (Debug)",
+    Description = "Prüfe warum es nicht läuft",
+    CurrentValue = false,
+    Callback = function(state)
+        getfenv().medals = (state and true or false)
+        print("[AutoTimeTrials] Toggle gesetzt auf:", getfenv().medals)
+
+        while getfenv().medals do
+            task.wait(1)
+            print("[AutoTimeTrials] Loop läuft...")
+
+            pcall(function()
+                local lp = game.Players.LocalPlayer
+                if not lp.Character then
+                    print("[AutoTimeTrials] Kein Character gefunden!")
+                    return
+                end
+
+                if lp.Character:FindFirstChild("Humanoid") and lp.Character.Humanoid.Sit == true then
+                    print("[AutoTimeTrials] Spieler sitzt im Auto.")
+
+                    for round = 1, 3 do
+                        for _, race in pairs(workspace.Races:GetChildren()) do
+                            if race.ClassName == "Folder" then
+                                print("[AutoTimeTrials] Starte TimeTrial für", race.Name, "Runde", round)
+                                game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer(race.Name, round)
+
+                                -- Prüfen ob Rennen wirklich gestartet wurde
+                                if lp:FindFirstChild("variables") then
+                                    print("[AutoTimeTrials] Aktuelles Race-Value:", lp.variables.race.Value)
+                                end
+                            end
+                        end
+                    end
+                else
+                    print("[AutoTimeTrials] Nicht im Auto → steige ein...")
+                    game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(lp.variables.carId.Value)
+                    task.wait(0.5)
+                    game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
+                end
+            end)
+        end
+    end
+}, "tbatt_debug")
