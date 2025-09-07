@@ -35,6 +35,11 @@ local ut = Window:CreateTab({
         ShowTitle = true
 })
 
+local utaafkl = ut:CreateLabel({
+        Text = "Anti Afk = OFF",
+        Style = 2
+})
+
 local utaafkt = ut:CreateButton({
         Name = "Anti Afk",
         Description = nil,
@@ -52,11 +57,6 @@ local utaafkt = ut:CreateButton({
             )
         end
 }, "utaafkt")
-
-local utaafkl = ut:CreateLabel({
-        Text = "Anti Afk = OFF",
-        Style = 2
-})
 
 if game.PlaceId == 7305309231 then
   repeat task.wait() until _G.Window
