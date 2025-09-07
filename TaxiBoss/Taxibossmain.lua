@@ -25,14 +25,14 @@ spawn(function()
     end
   end)
 
-local tbaft = Window:CreateTab({
+local tbtbaft = Window:CreateTab({
         Name = "Auto Farm",
         Icon = "home",
         ImageSource = "Material",
         ShowTitle = true
   })
 
-local tbaf = aft:CreateToggle({
+local tbaf = tbtbaft:CreateToggle({
     Name = "Auto Money",
     Description = nil,
     CurrentValue = false,
@@ -67,7 +67,7 @@ local tbaf = aft:CreateToggle({
         end
 }, "tbaf")
 
-local tbac = aft:CreateToggle({
+local tbac = tbtbaft:CreateToggle({
     Name = "Auto Customer",
     Description = nil,
     CurrentValue = false,
@@ -245,7 +245,7 @@ getfenv().stuck = getfenv().stuck+1
 
 }, "tbac")
 
-local tbat = aft:CreateToggle({
+local tbat = tbaft:CreateToggle({
     Name = "Auto Trophies",
     Description = nil,
     CurrentValue = false,
@@ -304,7 +304,7 @@ firetouchinterest(b.Parent.Parent.PrimaryPart,game:GetService("Workspace").Races
     end
   }, "tbat")
 
-local tbatt = aft:CreateToggle({
+local tbatt = tbaft:CreateToggle({
     Name = "Auto Time Trials",
     Description = nil,
     CurrentValue = false,
@@ -363,7 +363,7 @@ end
    end
   }, "tbatt")
 
-local tbauo = aft:CreateToggle({
+local tbauo = tbaft:CreateToggle({
     Name = "Auto Upgrade Office",
     Description = nil,
     CurrentValue = false,
@@ -397,7 +397,7 @@ local tbutr = tbmsc:CreateButton({
           end
 })
 
-local tbdg = aft:CreateToggle({
+local tbdg = tbaft:CreateToggle({
     Name = "Donut GOD",
     Description = nil,
     CurrentValue = false,
