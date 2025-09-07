@@ -23,8 +23,8 @@ end)
 local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "house",
-    ImageSource = "Material",
+    Icon = "car-taxi-front",
+    ImageSource = "Lucide",
     ShowTitle = true
 })
 
