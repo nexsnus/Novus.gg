@@ -28,5 +28,5 @@ local Window = Luna:CreateWindow({
 	  }
 })
 if game.placeId == 7305309231 then
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/kxzyInt/Novus-Hub/refs/heads/main/Taxiboss/main"))()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/TaxiBoss/Taxiboss%20main.lua"))()
 end
