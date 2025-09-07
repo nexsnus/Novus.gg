@@ -27,6 +27,7 @@ _G.Window = _G.Luna:CreateWindow({
 })
 
 if game.PlaceId == 7305309231 then
+  repeat task.wait() until _G.Window
   loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/TaxiBoss/Taxibossmain.lua"))()
 else
     Luna:Destroy()
