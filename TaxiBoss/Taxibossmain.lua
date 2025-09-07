@@ -1,17 +1,3 @@
-----------------------------------------------------------------------
--- 🛡️ Anti AFK
-----------------------------------------------------------------------
-local vu = game:GetService("VirtualUser")
-
-game:GetService("Players").LocalPlayer.Idled:Connect(function()
-    vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-    task.wait(1)
-    vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-end)
-
-----------------------------------------------------------------------
--- 🚨 Auto Kick wenn Staff joint
-----------------------------------------------------------------------
 spawn(function()
     local Players = game:GetService("Players")
 
@@ -34,20 +20,14 @@ spawn(function()
     end
 end)
 
-----------------------------------------------------------------------
--- 📂 Tab: Auto Farm
-----------------------------------------------------------------------
 local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "home",
+    Icon = "view_in_ar",
     ImageSource = "Material",
     ShowTitle = true
 })
 
-----------------------------------------------------------------------
--- 💰 Auto Money
-----------------------------------------------------------------------
 local tbaf = tbtbaft:CreateToggle({
     Name = "Auto Money",
     CurrentValue = false,
@@ -70,13 +50,11 @@ local tbaf = tbtbaft:CreateToggle({
             local player = game:GetService("Players").LocalPlayer
             local activeQuests = player.ActiveQuests
 
-            -- Starte Contract falls keiner aktiv
             if not activeQuests:FindFirstChild("contractBuildMaterial") then
                 game:GetService("ReplicatedStorage").Quests.Contracts.StartContract:InvokeServer("contractBuildMaterial")
                 repeat task.wait() until activeQuests:FindFirstChild("contractBuildMaterial")
             end
 
-            -- Contract farmen
             repeat
                 task.spawn(function()
                     for i = 1, 10 do
@@ -86,24 +64,17 @@ local tbaf = tbtbaft:CreateToggle({
                 task.wait()
             until activeQuests.contractBuildMaterial.Value == "!pw5pi3ps2"
 
-            -- Contract abschließen
             game:GetService("ReplicatedStorage").Quests.Contracts.CompleteContract:InvokeServer()
         end
     end
 }, "tbaf")
 
-----------------------------------------------------------------------
--- 🚖 Auto Customer
-----------------------------------------------------------------------
 local tbac = tbtbaft:CreateToggle({
     Name = "Auto Customer",
     CurrentValue = false,
     Callback = function(state)
         getfenv().autoCustomer = state
 
-        ------------------------------------------------------------------
-        -- 🧹 Map Cleanup
-        ------------------------------------------------------------------
         pcall(function()
             if workspace:FindFirstChild("GaragePlate") then
                 workspace.GaragePlate:Destroy()
@@ -116,18 +87,12 @@ local tbac = tbtbaft:CreateToggle({
             end
         end
 
-        ------------------------------------------------------------------
-        -- 🔢 Variablen Setup
-        ------------------------------------------------------------------
         getfenv().numbers = 0
         getfenv().stuck = 0
         local testValue = 1
         local ohsoso = false
         local antiban = 0
 
-        ------------------------------------------------------------------
-        -- 🔁 Main Loop
-        ------------------------------------------------------------------
         while getfenv().autoCustomer do
             task.wait()
             pcall(function()
@@ -137,9 +102,6 @@ local tbac = tbtbaft:CreateToggle({
 
                 if not character then return end
 
-                ------------------------------------------------------------------
-                -- 🚗 Wenn Spieler im Auto sitzt
-                ------------------------------------------------------------------
                 if character:FindFirstChild("Humanoid") and character.Humanoid.SeatPart ~= nil then
                     local car = character.Humanoid.SeatPart.Parent.Parent
 
@@ -148,9 +110,6 @@ local tbac = tbtbaft:CreateToggle({
                     raycastParams.FilterType = Enum.RaycastFilterType.Exclude
                     raycastParams.IgnoreWater = false
 
-                    ------------------------------------------------------------------
-                    -- 📌 Mission läuft, aber kein Ziel vorhanden
-                    ------------------------------------------------------------------
                     if vars.inMission.Value == true 
                         and not workspace.ParkingMarkers:FindFirstChild("destinationPart") then
 
@@ -162,9 +121,6 @@ local tbac = tbtbaft:CreateToggle({
                         end
                     end
 
-                    ------------------------------------------------------------------
-                    -- 🎯 Ziel gefunden & in Reichweite
-                    ------------------------------------------------------------------
                     if vars.inMission.Value == true 
                         and workspace.ParkingMarkers:FindFirstChild("destinationPart") 
                         and player:DistanceFromCharacter(workspace.ParkingMarkers.destinationPart.Position) < 50 then
@@ -172,11 +128,9 @@ local tbac = tbtbaft:CreateToggle({
                         testValue = 1
                         local destinationPart = workspace.ParkingMarkers.destinationPart
 
-                        -- Auto teleportieren
                         car:SetPrimaryPartCFrame(destinationPart.CFrame + Vector3.new(0, 3, 0))
                         car.PrimaryPart.Velocity = Vector3.new(0, 0, 0)
 
-                        -- Key Event simulieren
                         game:GetService("VirtualInputManager"):SendKeyEvent(true, 304, false, game)
                         task.wait(1)
 
@@ -203,9 +157,6 @@ local tbac = tbtbaft:CreateToggle({
                         testValue = 1
                     end
 
-                    ------------------------------------------------------------------
-                    -- 🌍 Wenn Auto in Terrain gefallen
-                    ------------------------------------------------------------------
                     if workspace:Raycast(character.HumanoidRootPart.Position, Vector3.new(0, -100, 0), raycastParams).Instance.Name == "Terrain" and not ohsoso then
                         getfenv().rat = nil
                         local distance = math.huge
@@ -224,9 +175,6 @@ local tbac = tbtbaft:CreateToggle({
                         ohsoso = true
                     end
 
-                    ------------------------------------------------------------------
-                    -- 🛣️ Mission läuft → Pfad berechnen
-                    ------------------------------------------------------------------
                     if vars.inMission.Value == true then
                         warn("Tester")
                         testValue -= 0.02
@@ -250,9 +198,6 @@ local tbac = tbtbaft:CreateToggle({
                             testValue = 1
                         end
 
-                        ------------------------------------------------------------------
-                        -- 📍 Pathfinding Waypoints
-                        ------------------------------------------------------------------
                         pcall(function()
                             local PathfindingService = game:GetService("PathfindingService")
                             local part1 = character.HumanoidRootPart
@@ -283,9 +228,6 @@ local tbac = tbtbaft:CreateToggle({
                         end)
                     end
 
-                    ------------------------------------------------------------------
-                    -- 👥 Mission NICHT aktiv → neuen Kunden suchen
-                    ------------------------------------------------------------------
                     if vars.inMission.Value == false then
                         getfenv().rat = nil
                         local distance = math.huge
@@ -315,10 +257,7 @@ local tbac = tbtbaft:CreateToggle({
                             end
                         end
                     end
-
-                ------------------------------------------------------------------
-                -- ❌ Spieler NICHT im Auto → einsteigen
-                ------------------------------------------------------------------
+                            
                 elseif character:FindFirstChild("Humanoid") and character.Humanoid.SeatPart == nil then
                     game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(vars.carId.Value)
                     task.wait(0.5)
@@ -329,66 +268,6 @@ local tbac = tbtbaft:CreateToggle({
     end
 }, "tbac")
 
-----------------------------------------------------------------------
--- 🏆 Auto Trophies
-----------------------------------------------------------------------
-local tbat = tbtbaft:CreateToggle({
-    Name = "Auto Trophies",
-    CurrentValue = false,
-    Callback = function(state)
-        getfenv().autoTrophies = state
-        game:GetService("ReplicatedStorage").Race.LeaveRace:InvokeServer()
-
-        getfenv().showUI = state
-        spawn(function()
-            if not getfenv().showUI and game.Players.LocalPlayer.PlayerGui.ScreenGui.Money:FindFirstChild("Rep") then
-                game.Players.LocalPlayer.PlayerGui.ScreenGui.Money.Rep:Destroy()
-            else
-                while getfenv().showUI do
-                    task.wait()
-                    if not game.Players.LocalPlayer.PlayerGui.ScreenGui.Money:FindFirstChild("Rep") then
-                        local repLabel = game.Players.LocalPlayer.PlayerGui.ScreenGui.Money.CashLabel:Clone()
-                        repLabel.Name = "Rep"
-                        repLabel.Parent = game.Players.LocalPlayer.PlayerGui.ScreenGui.Money
-                        repLabel.Position = UDim2.new(3, 0, 0, 0)
-                    else
-                        game.Players.LocalPlayer.PlayerGui.ScreenGui.Money.Rep.Text =
-                            "Rep: " .. tostring(game.Players.LocalPlayer.variables.rep.Value)
-                    end
-                end
-            end
-        end)
-
-        while getfenv().autoTrophies do
-            task.wait()
-            pcall(function()
-                -- (Hier bleibt die Trophy-Logik identisch,
-                -- nur sauber eingerückt)
-            end)
-        end
-    end
-}, "tbat")
-
-----------------------------------------------------------------------
--- ⏱️ Auto Time Trials
-----------------------------------------------------------------------
-local tbatt = tbtbaft:CreateToggle({
-    Name = "Auto Time Trials",
-    CurrentValue = false,
-    Callback = function(state)
-        getfenv().autoMedals = state
-        game:GetService("ReplicatedStorage").Race.LeaveRace:InvokeServer()
-
-        while getfenv().autoMedals do
-            task.wait()
-            -- (Time Trial Logik bleibt, aber eingerückt)
-        end
-    end
-}, "tbatt")
-
-----------------------------------------------------------------------
--- 🏢 Auto Upgrade Office
-----------------------------------------------------------------------
 local tbauo = tbtbaft:CreateToggle({
     Name = "Auto Upgrade Office",
     CurrentValue = false,
@@ -411,9 +290,6 @@ local tbauo = tbtbaft:CreateToggle({
     end
 }, "tbauo")
 
-----------------------------------------------------------------------
--- 🛠️ Miscellaneous Tab
-----------------------------------------------------------------------
 local tbmsc = Window:CreateTab({
     Name = "Miscellaneous",
     Icon = "extension",
@@ -428,9 +304,6 @@ local tbutr = tbmsc:CreateButton({
     end
 })
 
-----------------------------------------------------------------------
--- 🍩 Donut GOD
-----------------------------------------------------------------------
 local tbdg = tbmsc:CreateToggle({
     Name = "Donut GOD",
     CurrentValue = false,
@@ -445,132 +318,3 @@ local tbdg = tbmsc:CreateToggle({
         end
     end
 }, "tbdg")
-
-
-
-local tbac = tbtbaft:CreateToggle({
-    Name = "Auto Customer (Debug)",
-    Description = "Finde heraus, warum es nicht läuft",
-    CurrentValue = false,
-    Callback = function(state)
-        getfenv().customersfarm = (state and true or false)
-        print("[AutoCustomer] Toggle gesetzt auf:", getfenv().customersfarm)
-
-        -- Reset Counter
-        getfenv().numbers = 0
-        getfenv().stuck = 0
-
-        while getfenv().customersfarm do
-            task.wait(1)
-            print("[AutoCustomer] Loop läuft...")
-
-            pcall(function()
-                local lp = game.Players.LocalPlayer
-                if not lp.Character then
-                    print("[AutoCustomer] Kein Character gefunden!")
-                    return
-                end
-
-                if lp.Character:FindFirstChild("Humanoid") and lp.Character.Humanoid.SeatPart then
-                    print("[AutoCustomer] Spieler sitzt im Auto.")
-                    local car = lp.Character.Humanoid.SeatPart.Parent.Parent
-
-                    if lp:FindFirstChild("variables") and lp.variables.inMission.Value == true then
-                        print("[AutoCustomer] Mission aktiv.")
-                        if workspace.ParkingMarkers:FindFirstChild("destinationPart") then
-                            print("[AutoCustomer] Destination gefunden.")
-                        else
-                            print("[AutoCustomer] Keine Destination gefunden.")
-                        end
-                    else
-                        print("[AutoCustomer] Keine Mission aktiv.")
-                    end
-                else
-                    print("[AutoCustomer] Nicht im Auto, versuche einzusteigen...")
-                end
-            end)
-        end
-    end
-}, "tbac_debug")
-local tbat = tbtbaft:CreateToggle({
-    Name = "Auto Trophies (Debug)",
-    Description = "Finde heraus, warum es nicht läuft",
-    CurrentValue = false,
-    Callback = function(state)
-        getfenv().Trophies = (state and true or false)
-        print("[AutoTrophies] Toggle gesetzt auf:", getfenv().Trophies)
-
-        while getfenv().Trophies do
-            task.wait(1)
-            print("[AutoTrophies] Loop läuft...")
-
-            pcall(function()
-                local lp = game.Players.LocalPlayer
-                if not lp.Character then
-                    print("[AutoTrophies] Kein Character gefunden!")
-                    return
-                end
-
-                if lp.Character:FindFirstChild("Humanoid") and lp.Character.Humanoid.Sit == true then
-                    print("[AutoTrophies] Spieler sitzt im Auto.")
-                    if lp:FindFirstChild("variables") and lp.variables.race.Value == "none" then
-                        print("[AutoTrophies] Kein aktives Rennen → starte TimeTrial...")
-                        game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer("circuit", 5)
-                    else
-                        print("[AutoTrophies] Schon in einem Rennen oder Variablen fehlen.")
-                    end
-                else
-                    print("[AutoTrophies] Nicht im Auto → steige ein...")
-                    game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(lp.variables.carId.Value)
-                    task.wait(0.5)
-                    game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
-                end
-            end)
-        end
-    end
-}, "tbat_debug")
-local tbatt = tbtbaft:CreateToggle({
-    Name = "Auto Time Trials (Debug)",
-    Description = "Prüfe warum es nicht läuft",
-    CurrentValue = false,
-    Callback = function(state)
-        getfenv().medals = (state and true or false)
-        print("[AutoTimeTrials] Toggle gesetzt auf:", getfenv().medals)
-
-        while getfenv().medals do
-            task.wait(1)
-            print("[AutoTimeTrials] Loop läuft...")
-
-            pcall(function()
-                local lp = game.Players.LocalPlayer
-                if not lp.Character then
-                    print("[AutoTimeTrials] Kein Character gefunden!")
-                    return
-                end
-
-                if lp.Character:FindFirstChild("Humanoid") and lp.Character.Humanoid.Sit == true then
-                    print("[AutoTimeTrials] Spieler sitzt im Auto.")
-
-                    for round = 1, 3 do
-                        for _, race in pairs(workspace.Races:GetChildren()) do
-                            if race.ClassName == "Folder" then
-                                print("[AutoTimeTrials] Starte TimeTrial für", race.Name, "Runde", round)
-                                game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer(race.Name, round)
-
-                                -- Prüfen ob Rennen wirklich gestartet wurde
-                                if lp:FindFirstChild("variables") then
-                                    print("[AutoTimeTrials] Aktuelles Race-Value:", lp.variables.race.Value)
-                                end
-                            end
-                        end
-                    end
-                else
-                    print("[AutoTimeTrials] Nicht im Auto → steige ein...")
-                    game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(lp.variables.carId.Value)
-                    task.wait(0.5)
-                    game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
-                end
-            end)
-        end
-    end
-}, "tbatt_debug")
