@@ -125,7 +125,7 @@ local Window = _G.Window
 
 local bybmt = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "home",
+    Icon = "double_arrow",
     ImageSource = "Material",
     ShowTitle = true
 })
