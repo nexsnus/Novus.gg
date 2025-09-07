@@ -445,3 +445,87 @@ local tbdg = tbmsc:CreateToggle({
         end
     end
 }, "tbdg")
+
+
+
+local tbac = tbtbaft:CreateToggle({
+    Name = "Auto Customer (Debug)",
+    Description = "Finde heraus, warum es nicht läuft",
+    CurrentValue = false,
+    Callback = function(state)
+        getfenv().customersfarm = (state and true or false)
+        print("[AutoCustomer] Toggle gesetzt auf:", getfenv().customersfarm)
+
+        -- Reset Counter
+        getfenv().numbers = 0
+        getfenv().stuck = 0
+
+        while getfenv().customersfarm do
+            task.wait(1)
+            print("[AutoCustomer] Loop läuft...")
+
+            pcall(function()
+                local lp = game.Players.LocalPlayer
+                if not lp.Character then
+                    print("[AutoCustomer] Kein Character gefunden!")
+                    return
+                end
+
+                if lp.Character:FindFirstChild("Humanoid") and lp.Character.Humanoid.SeatPart then
+                    print("[AutoCustomer] Spieler sitzt im Auto.")
+                    local car = lp.Character.Humanoid.SeatPart.Parent.Parent
+
+                    if lp:FindFirstChild("variables") and lp.variables.inMission.Value == true then
+                        print("[AutoCustomer] Mission aktiv.")
+                        if workspace.ParkingMarkers:FindFirstChild("destinationPart") then
+                            print("[AutoCustomer] Destination gefunden.")
+                        else
+                            print("[AutoCustomer] Keine Destination gefunden.")
+                        end
+                    else
+                        print("[AutoCustomer] Keine Mission aktiv.")
+                    end
+                else
+                    print("[AutoCustomer] Nicht im Auto, versuche einzusteigen...")
+                end
+            end)
+        end
+    end
+}, "tbac_debug")
+local tbat = tbtbaft:CreateToggle({
+    Name = "Auto Trophies (Debug)",
+    Description = "Finde heraus, warum es nicht läuft",
+    CurrentValue = false,
+    Callback = function(state)
+        getfenv().Trophies = (state and true or false)
+        print("[AutoTrophies] Toggle gesetzt auf:", getfenv().Trophies)
+
+        while getfenv().Trophies do
+            task.wait(1)
+            print("[AutoTrophies] Loop läuft...")
+
+            pcall(function()
+                local lp = game.Players.LocalPlayer
+                if not lp.Character then
+                    print("[AutoTrophies] Kein Character gefunden!")
+                    return
+                end
+
+                if lp.Character:FindFirstChild("Humanoid") and lp.Character.Humanoid.Sit == true then
+                    print("[AutoTrophies] Spieler sitzt im Auto.")
+                    if lp:FindFirstChild("variables") and lp.variables.race.Value == "none" then
+                        print("[AutoTrophies] Kein aktives Rennen → starte TimeTrial...")
+                        game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer("circuit", 5)
+                    else
+                        print("[AutoTrophies] Schon in einem Rennen oder Variablen fehlen.")
+                    end
+                else
+                    print("[AutoTrophies] Nicht im Auto → steige ein...")
+                    game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(lp.variables.carId.Value)
+                    task.wait(0.5)
+                    game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
+                end
+            end)
+        end
+    end
+}, "tbat_debug")
