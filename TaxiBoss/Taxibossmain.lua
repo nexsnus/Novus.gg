@@ -23,7 +23,7 @@ end)
 local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "10814531078",
+    Icon = "279461711",
     ImageSource = "Custom",
     ShowTitle = true
 })
