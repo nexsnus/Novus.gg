@@ -431,7 +431,7 @@ local tbutr = tbmsc:CreateButton({
 ----------------------------------------------------------------------
 -- 🍩 Donut GOD
 ----------------------------------------------------------------------
-local tbdg = tbtbaft:CreateToggle({
+local tbdg = tbmsc:CreateToggle({
     Name = "Donut GOD",
     CurrentValue = false,
     Callback = function(state)
