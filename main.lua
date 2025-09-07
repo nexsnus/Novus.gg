@@ -45,8 +45,18 @@ local utaafkt = ut:CreateButton({
                 VirtualUser:CaptureController()
                 VirtualUser:ClickButton2(Vector2.new())
             end)
+
+            utaafkl:Set(
+                Text = "Anti Afk = ON",
+                Style = 3
+            )
         end
 }, "utaafkt")
+
+local utaafkl = ut:CreateLabel({
+        Text = "Anti Afk = OFF",
+        Style = 2
+})
 
 if game.PlaceId == 7305309231 then
   repeat task.wait() until _G.Window
