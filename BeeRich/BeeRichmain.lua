@@ -12,7 +12,7 @@ local beraftm = Window:CreateTab({
     ShowTitle = true
 })
 
-local farmloop
+local farmLoop
 
 local beraft = beraftm:CreateToggle({
     Name = "Auto Farm",
