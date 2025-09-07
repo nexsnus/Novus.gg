@@ -142,7 +142,7 @@ local bybaft = bybmt:CreateToggle({
 
 local bybsds = bybmt:CreateSlider({
     Name = "Slam Duration",
-    Range = {5, 60}
+    Range = {5, 60},
     Increment = 1,
     CurrentValue = 20,
         Callback = function(value)
@@ -152,7 +152,7 @@ local bybsds = bybmt:CreateSlider({
 
 local bybsvs = bybmt:CreateSlider({
     Name = "Slam Velocity",
-    Range = {50, 500}
+    Range = {50, 500},
     Increment = 1,
     CurrentValue = 100,
         Callback = function(value)
