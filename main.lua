@@ -40,7 +40,7 @@ local antiAfkConnection
 
 local utaafkt = ut:CreateToggle({
     Name = "Anti Afk",
-    Description = "Schaltet Anti-Afk ein/aus",
+    Description = nil,
     Callback = function()
         if not antiAfkEnabled then
             antiAfkEnabled = true
