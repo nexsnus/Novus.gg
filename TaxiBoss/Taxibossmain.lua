@@ -1,3 +1,4 @@
+local Icons = _G.Icons
 spawn(function()
     local Players = game:GetService("Players")
 
@@ -23,8 +24,8 @@ end)
 local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "http://www.roblox.com/asset/?id6035145381",
-    ImageSource = "http://www.roblox.com/asset/?id6035145381",
+    Icon = "home",
+    ImageSource = "Icons",
     ShowTitle = true
 })
 
