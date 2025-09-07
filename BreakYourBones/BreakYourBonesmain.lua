@@ -160,16 +160,6 @@ local bybsvs = bybmt:CreateSlider({
         end
 }, "bybsvs")
 
-local bybaut = bybmt:CreateToggle({
-    Name = "Auto Upgrade Bones",
-    Description = nil,
-    CurrentValue = false,
-    Callback = function(state)
-        runningUpgrade = state
-    	  if state then task.spawn(autoUpgradeLoop) end
-    end
-}, "bybaut")
-
 local bybanrt = bybmt:CreateToggle({
     Name = "Auto Purchase Next Ragdoll",
     Description = nil,
@@ -179,6 +169,16 @@ local bybanrt = bybmt:CreateToggle({
     	  if state then task.spawn(autoNextRagdollLoop) end
     end
 }, "bybanrt")
+
+local bybaut = bybmt:CreateToggle({
+    Name = "Auto Upgrade Bones",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+        runningUpgrade = state
+    	  if state then task.spawn(autoUpgradeLoop) end
+    end
+}, "bybaut")
 
 local bybart = bybmt:CreateToggle({
     Name = "Auto Refine Ragdoll",
