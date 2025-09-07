@@ -65,6 +65,7 @@ local tbaf = tbtbaft:CreateToggle({
              wait()
             game:GetService("ReplicatedStorage").Quests.Contracts.CompleteContract:InvokeServer()
         end
+      end
 }, "tbaf")
 
 local tbac = tbtbaft:CreateToggle({
