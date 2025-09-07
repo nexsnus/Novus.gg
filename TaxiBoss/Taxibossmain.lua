@@ -23,8 +23,8 @@ end)
 local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "place",
-    ImageSource = "Material",
+    Icon = "http://www.roblox.com/asset/?id6035145381",
+    ImageSource = nil,
     ShowTitle = true
 })
 
