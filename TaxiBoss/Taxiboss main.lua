@@ -1,1 +1,414 @@
 
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+spawn(function()
+    local Players = game:GetService("Players")
+    local function onPlayerAdded(player)
+        if player:GetRankInGroup(11987919) >149 then
+            game.Players.LocalPlayer:Kick("Auto Kicked Due to Staff Member "..player.Name.." joined your game")
+        else
+            warn(player.Name,"just joined the game")
+        end
+    end
+    end)
+    spawn(function()
+        while wait() do
+        for i,v in pairs(game.Players:GetPlayers()) do
+        if v:GetRankInGroup(11987919) >149 then
+            game.Players.LocalPlayer:Kick("Auto Kicked Due to Staff Member "..v.Name.." is in your game")
+        end
+    end
+    wait(5)
+    end
+  end)
+
+local tbaft = Window:CreateTab({
+        Name = "Auto Farm",
+        Icon = "home",
+        ImageSource = "Material",
+        ShowTitle = true
+  })
+
+local tbaf = aft:CreateToggle({
+    Name = "Auto Money",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+      getfenv().test2 = (state and true or false)
+      pcall(function()
+      game:GetService("ReplicatedStorage").Quests.Contracts.CancelContract:InvokeServer(game:GetService("Players").LocalPlayer.ActiveQuests:FindFirstChildOfClass("StringValue").Name)
+      game:GetService("ReplicatedStorage").Quests.Contracts.CancelContract:InvokeServer(game:GetService("Players").LocalPlayer.ActiveQuests:FindFirstChildOfClass("StringValue").Name)
+      end)
+      while getfenv().test2 do
+          wait()
+          if not  game:GetService("Players").LocalPlayer.ActiveQuests:FindFirstChild("contractBuildMaterial") then
+              game:GetService("ReplicatedStorage").Quests.Contracts.StartContract:InvokeServer("contractBuildMaterial")
+      repeat task.wait()
+      until game:GetService("Players").LocalPlayer.ActiveQuests:FindFirstChild("contractBuildMaterial")
+      end
+          repeat task.wait()
+              task.spawn(function()
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+              game:GetService("ReplicatedStorage").Quests.DeliveryComplete:InvokeServer("contractMaterial")
+          end)
+        until game:GetService("Players").LocalPlayer.ActiveQuests.contractBuildMaterial.Value == "!pw5pi3ps2"
+             wait()
+            game:GetService("ReplicatedStorage").Quests.Contracts.CompleteContract:InvokeServer()
+        end
+}, "tbaf")
+
+local tbac = aft:CreateToggle({
+    Name = "Auto Customer",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+      getfenv().customersfarm = (state and true or false)
+    pcall(function()
+       game:GetService("Workspace").GaragePlate:Destroy()
+       end)
+       for i,v in pairs(game:GetService("Workspace").World.Industrial.Port:GetChildren()) do
+          if string.find(v.Name,"Container") then
+             v:Destroy()
+          end
+       end
+    getfenv().numbers = 0
+    getfenv().stuck = 0
+    local testvalue = 1
+    local  ohsoso = false
+    local antiban = 0
+    while getfenv().customersfarm do
+        wait()
+        pcall(function()
+    if game.Players.LocalPlayer.Character.Humanoid.SeatPart ~= nil then
+    local chr = game.Players.LocalPlayer.Character
+    local car = chr.Humanoid.SeatPart.Parent.Parent
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterDescendantsInstances = {chr,car,workspace.Camera}
+    raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+    raycastParams.IgnoreWater = false
+     ohsoso = false
+     if game:GetService("Players").LocalPlayer.variables.inMission.Value == true and not game:GetService("Workspace").ParkingMarkers:FindFirstChild("destinationPart") then
+        antiban=antiban+1
+        wait(1)
+     elseif  antiban > 10 then
+        game.Players.LocalPlayer:Kick("Kicked Due to game being glitched")
+        end
+       if game:GetService("Players").LocalPlayer.variables.inMission.Value == true and game:GetService("Workspace").ParkingMarkers:FindFirstChild("destinationPart") and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").ParkingMarkers:WaitForChild("destinationPart").Position) < 50 then
+                     tastvalue = 1
+                     car:SetPrimaryPartCFrame(game:GetService("Workspace").ParkingMarkers.destinationPart.CFrame+Vector3.new(0,3,0))
+                       car.PrimaryPart.Velocity = Vector3.new(0,0,0)
+                     game:GetService("VirtualInputManager"):SendKeyEvent(true,304,false,game)
+                     wait(1)
+                     car:SetPrimaryPartCFrame(game:GetService("Workspace").ParkingMarkers.destinationPart.CFrame+Vector3.new(0,3,0))
+                     car.PrimaryPart.Velocity = Vector3.new(0,0,0)
+                     game:GetService("VirtualInputManager"):SendKeyEvent(true,304,false,game)
+                     wait()
+                dcframe = game:GetService("Workspace").ParkingMarkers.destinationPart.CFrame
+    repeat wait()
+         if (car.PrimaryPart.Position-Vector3.new(dcframe.X,dcframe.Y,dcframe.Z)).magnitude > 3 then
+                              car.PrimaryPart.Velocity = Vector3.new(0,0,0)
+                     car:PivotTo(dcframe)
+                     wait(0.1)
+                     game:GetService("VirtualInputManager"):SendKeyEvent(true,304,false,game)
+                     car.PrimaryPart.Velocity = Vector3.new(0,0,0)
+         end
+    until not game:GetService("Workspace").ParkingMarkers:FindFirstChild("destinationPart") or getfenv().customersfarm == false
+    antiban = 0
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,304,false,game)
+    getfenv().numbers=getfenv().numbers+1
+                    testvalue = 1
+                     task.wait()
+    
+    elseif  workspace:Raycast(game.Players.LocalPlayer.Character.HumanoidRootPart.Position, Vector3.new(0, -100, 0),raycastParams).Instance.Name == "Terrain" and ohsoso == false then
+       getfenv().rat = nil
+       local distance = math.huge
+       for i,v in pairs(game:GetService("Workspace").World:GetDescendants()) do
+          if string.find(v.Name,"road") and v.ClassName == "Part" or string.find(v.Name,"Road") and v.ClassName == "Part"    then
+              local Dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Position).magnitude
+       if Dist < distance then
+       distance = Dist
+       getfenv().rat = v
+       end
+       end
+       end
+    car:PivotTo(getfenv().rat.CFrame)
+     ohsoso = true
+    elseif game:GetService("Players").LocalPlayer.variables.inMission.Value == true  then
+    warn("Tester")
+    local chr = game.Players.LocalPlayer.Character
+    local car = chr.Humanoid.SeatPart.Parent.Parent
+    print(testvalue)
+    testvalue = testvalue-.02 
+    if testvalue < 0 then
+         getfenv().rat = nil
+       local distance = math.huge
+       for i,v in pairs(game:GetService("Workspace").World:GetDescendants()) do
+          if string.find(v.Name,"road") and v.ClassName == "Part" or string.find(v.Name,"Road") and v.ClassName == "Part"  then
+              local Dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Position).magnitude
+       if Dist < distance then
+       distance = Dist
+       getfenv().rat = v
+       end
+       end
+       end
+    car:PivotTo(getfenv().rat.CFrame)
+getfenv().stuck = getfenv().stuck+1
+        testvalue = 1 
+    end
+    pcall(function()
+    local PathfindingService = game:GetService("PathfindingService")
+    local TweenService = game:GetService("TweenService")
+    local part1 = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local part2 = game:GetService("Workspace").ParkingMarkers.destinationPart
+    local whatever = part1.CFrame:lerp(part2.CFrame, testvalue)
+    local iguess = Vector3.new(whatever.X,part2.Position.Y,whatever.Z)
+    local carprimary = car
+    local destination = iguess
+    
+    
+    local path = PathfindingService:CreatePath({
+       AgentRadius = 20
+       })
+    
+    path:ComputeAsync(carprimary.PrimaryPart.Position, destination)
+    print(path:ComputeAsync(carprimary.PrimaryPart.Position, destination))
+    local waypoints = path:GetWaypoints()
+    
+    for yay, waypoint in pairs(waypoints) do
+       print("test")
+    local part = Instance.new("Part")
+    part.Shape = "Ball"
+    part.Size = Vector3.new(0.6, 0.6, 0.6)
+    part.Position = waypoint.Position
+    part.Anchored = true
+    part.CanCollide = false
+    part.Parent = game.Workspace
+    local chr = game.Players.LocalPlayer.Character
+    local car = chr.Humanoid.SeatPart.Parent.Parent
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterDescendantsInstances = {chr,car,workspace.Camera}
+    raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+    raycastParams.IgnoreWater = true
+    if workspace:Raycast(waypoint.Position, Vector3.new(0, 1000, 0),raycastParams) == nil then
+    car:PivotTo(part.CFrame+Vector3.new(0,5,0))
+    part:Destroy()
+    testvalue = 1
+    task.wait(0.009)
+    elseif workspace:Raycast(waypoint.Position, Vector3.new(0, 1000, 0),raycastParams) ~= nil then
+      print(workspace:Raycast(waypoint.Position, Vector3.new(0, 1000, 0),raycastParams))
+      part:Destroy()
+      testvalue = 1
+    end
+    end
+    end)
+    elseif game:GetService("Players").LocalPlayer.variables.inMission.Value == false then
+      getfenv().rat = nil
+    local distance = math.huge
+    for i,v in pairs(game:GetService("Workspace").NewCustomers:GetDescendants()) do
+              if v.Name == "Part" and v:GetAttribute("GroupSize") ~= nil  and v:FindFirstChildOfClass("CFrameValue") and game.Players.LocalPlayer.variables.seatAmount.Value > v:GetAttribute("GroupSize") and v:GetAttribute("Rating") < game:GetService("Players").LocalPlayer.variables.vehicleRating.Value and game:GetService("Players").LocalPlayer.variables.inMission.Value == false then
+
+         print(v)
+           local Dist = (v.Position-Vector3.new(v:FindFirstChildOfClass("CFrameValue").Value.X,v:FindFirstChildOfClass("CFrameValue").Value.Y,v:FindFirstChildOfClass("CFrameValue").Value.Z)).magnitude
+    if Dist < distance then
+    distance = Dist
+    getfenv().rat = v
+    end
+    end
+    end
+       for ok,ya in pairs(game:GetService("Workspace").Vehicles:GetDescendants()) do
+                 if ya.Name == "Player" and ya.Value == game.Players.LocalPlayer  then
+    ya.Parent.Parent:SetPrimaryPartCFrame(getfenv().rat.CFrame*CFrame.new(0,3,0))
+    wait(1)
+    fireproximityprompt(getfenv().rat.Client.PromptPart.CustomerPrompt)
+    wait(3)
+    end
+    end
+    end
+    elseif game.Players.LocalPlayer.Character.Humanoid.SeatPart == nil then
+          game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(game:GetService("Players").LocalPlayer.variables.carId.Value)
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
+    end
+    end)
+    end
+  end)
+
+}, "tbac")
+
+local tbat = aft:CreateToggle({
+    Name = "Auto Trophies",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+      getfenv().Trophies = (state and true or false)
+game:GetService("ReplicatedStorage").Race.LeaveRace:InvokeServer()
+getfenv().showui = getfenv().Trophies
+ spawn(function()
+      if getfenv().showui == false and game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money:FindFirstChild("Rep") then
+game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money.Rep:Destroy()
+else
+while getfenv().showui do
+    task.wait()
+if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money:FindFirstChild("Rep") then
+local oh = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money.CashLabel:Clone()
+oh.Name = "Rep"
+oh.Parent = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money
+wait()
+game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money.Rep.Position = UDim2.new(3,0,0,0)
+else
+game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Money.Rep.Text = "Rep:"..tostring(game:GetService("Players").LocalPlayer.variables.rep.Value)
+end
+end
+end
+end) 
+       while getfenv().Trophies  do
+            task.wait()
+            pcall(function()
+      if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+    if game:GetService("Players").LocalPlayer.variables.race.Value == "none" then
+        task.wait()
+    game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer("circuit", 5)
+    else
+    for a,b in pairs(game:GetService("Workspace").Vehicles:GetDescendants()) do
+        if b.Name == "Player" and b.Value == game.Players.LocalPlayer then
+    for i,v in pairs(game:GetService("Workspace").Races["circuit"].detects:GetChildren()) do
+        if v.ClassName == "Part" and v:FindFirstChild("TouchInterest") then
+            v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            firetouchinterest(b.Parent.Parent.PrimaryPart,v,0)
+                    firetouchinterest(b.Parent.Parent.PrimaryPart,v,1)
+    
+        end
+    end
+    game:GetService("Workspace").Races["circuit"].timeTrial:FindFirstChildOfClass("IntValue").finish.CFrame =  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+firetouchinterest(b.Parent.Parent.PrimaryPart,game:GetService("Workspace").Races["circuit"].timeTrial:FindFirstChildOfClass("IntValue").finish,0)
+                    firetouchinterest(b.Parent.Parent.PrimaryPart,game:GetService("Workspace").Races["circuit"].timeTrial:FindFirstChildOfClass("IntValue").finish,1)
+    end
+     end   
+    end
+    elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(game:GetService("Players").LocalPlayer.variables.carId.Value)
+        wait(0.5)
+        game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
+    end
+    end)
+    end
+  }, "tbat")
+
+local tbatt = aft:CreateToggle({
+    Name = "Auto Time Trials",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+      getfenv().medals = (state and true or false)
+  game:GetService("ReplicatedStorage").Race.LeaveRace:InvokeServer()
+  while getfenv().medals  do
+       task.wait()
+ if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+   for round=1,3 do
+   for what,races in pairs(game:GetService("Workspace").Races:GetChildren()) do
+     if races.ClassName == "Folder" and getfenv().medals then
+game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer(races.Name, round)
+wait()
+if game:GetService("Players").LocalPlayer.variables.race.Value == "none" then
+   task.wait()
+game:GetService("ReplicatedStorage").Race.TimeTrial:InvokeServer(races.Name, round)
+else
+   for a,b in pairs(game:GetService("Workspace").Vehicles:GetDescendants()) do
+   if b.Name == "Player" and b.Value == game.Players.LocalPlayer then
+ repeat wait()
+for i,v in pairs(game:GetService("Workspace").Races[races.Name].detects:GetChildren()) do
+   if v.ClassName == "Part" and v:FindFirstChild("TouchInterest") then
+      v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+       firetouchinterest(b.Parent.Parent.PrimaryPart,v,0)
+               firetouchinterest(b.Parent.Parent.PrimaryPart,v,1)
+   end
+end
+until game:GetService("Workspace").Races[races.Name].timeTrial:FindFirstChildOfClass("IntValue") or getfenv().medals == false
+repeat wait()
+ for i,v in pairs(game:GetService("Workspace").Races[races.Name].detects:GetChildren()) do
+   if v.ClassName == "Part" and v:FindFirstChild("TouchInterest") then
+      v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+       firetouchinterest(b.Parent.Parent.PrimaryPart,v,0)
+               firetouchinterest(b.Parent.Parent.PrimaryPart,v,1)
+   end
+end
+ pcall(function()
+ game:GetService("Workspace").Races[races.Name].timeTrial:FindFirstChildOfClass("IntValue").finish.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+firetouchinterest(b.Parent.Parent.PrimaryPart,game:GetService("Workspace").Races[races.Name].timeTrial:FindFirstChildOfClass("IntValue").finish,0)
+               firetouchinterest(b.Parent.Parent.PrimaryPart,game:GetService("Workspace").Races[races.Name].timeTrial:FindFirstChildOfClass("IntValue").finish,1)
+end)
+until game:GetService("Players").LocalPlayer.variables.race.Value == "none" or getfenv().medals == false
+end
+end 
+end
+
+end
+end
+end
+elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+   game:GetService("ReplicatedStorage").Vehicles.GetNearestSpot:InvokeServer(game:GetService("Players").LocalPlayer.variables.carId.Value)
+   wait(0.5)
+   game:GetService("ReplicatedStorage").Vehicles.EnterVehicleEvent:InvokeServer()
+end
+   end
+  }, "tbatt")
+
+local tbauo = aft:CreateToggle({
+    Name = "Auto Upgrade Office",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+      getfenv().ofs = (state and true or false)
+    while getfenv().ofs do
+        wait()
+    if not game:GetService("Players").LocalPlayer:FindFirstChild("Office") then
+    game:GetService("ReplicatedStorage").Company.StartOffice:InvokeServer()
+    wait(0.2)
+    end
+    if game:GetService("Players").LocalPlayer.Office:GetAttribute("level") <16 then
+    game:GetService("ReplicatedStorage").Company.SkipOfficeQuest:InvokeServer()
+    game:GetService("ReplicatedStorage").Company.UpgradeOffice:InvokeServer()
+    end
+    end
+  }, "tbauo")
+  
+local tbmsc = Window:CreateTab({
+        Name = "Miscellaneous",
+        Icon = "extension",
+        ImageSource = "Material",
+        ShowTitle = true
+  })
+      
+local tbutr = tbmsc:CreateButton({
+          Name = "Unlock Taxi Radar",
+          Description = nil,
+          Callback = function()
+            game:GetService("Players").LocalPlayer.variables.vip.Value = true
+          end
+})
+
+local tbdg = aft:CreateToggle({
+    Name = "Donut GOD",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+      getfenv().donut = (state and true or false)
+      while getfenv().donut do
+          task.wait()
+      pcall(function()
+      local part = game.Players.LocalPlayer.Character.Humanoid.SeatPart
+      part.RotVelocity = Vector3.new(0,part.RotVelocity.Y+10,0)
+      end)
+      end
+  }, "tbdg")
