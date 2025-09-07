@@ -65,6 +65,9 @@ if game.PlaceId == 7305309231 then
 elseif game.PlaceId == 123821081589134 then
     repeat task.wait() until _G.Window
     loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/BreakYourBones/BreakYourBonesmain.lua"))()
-else
+elseif game.PlaceId == 96601927506261 then
+    repeat task.wait() until _G.Window
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/BeeRich/BeeRichmain.lua"))()
+else    
     Luna:Destroy()
 end
