@@ -26,6 +26,29 @@ _G.Window = _G.Luna:CreateWindow({
     }
 })
 
+local ut = Window:CreateTab({
+        Name = "Universal",
+        Icon = "all_inclusive",
+        ImageSource = "Material",
+        ShowTitle = true
+})
+
+local utaafkt = ut:CreateToggle({
+        Name = "Anti Afk",
+        Description = nil,
+        CurrentValue = false,
+        Callback = function(state)
+            while state == true do
+                local VirtualUser = game:GetService('VirtualUser')
+ 
+                game:GetService('Players').LocalPlayer.Idled:Connect(function()
+                    VirtualUser:CaptureController()
+                    VirtualUser:ClickButton2(Vector2.new())
+                end)
+            end
+        end
+}, "utaafkt")
+
 if game.PlaceId == 7305309231 then
   repeat task.wait() until _G.Window
   loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/TaxiBoss/Taxibossmain.lua"))()
