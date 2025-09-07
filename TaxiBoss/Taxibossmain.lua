@@ -37,6 +37,7 @@ end)
 ----------------------------------------------------------------------
 -- 📂 Tab: Auto Farm
 ----------------------------------------------------------------------
+local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
     Icon = "home",
