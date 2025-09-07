@@ -1,4 +1,3 @@
-local Icons = _G.Icons
 spawn(function()
     local Players = game:GetService("Players")
 
@@ -24,8 +23,8 @@ end)
 local Window = _G.Window
 local tbtbaft = Window:CreateTab({
     Name = "Auto Farm",
-    Icon = "home",
-    ImageSource = "Icons",
+    Icon = "rbxassetid://6035145381",
+    ImageSource = "Custom",
     ShowTitle = true
 })
 
