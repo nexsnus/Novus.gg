@@ -26,7 +26,9 @@ _G.Window = _G.Luna:CreateWindow({
     }
 })
 
-local ut = _G.Window:CreateTab({
+local Window = _G.Window
+
+local ut = Window:CreateTab({
         Name = "Universal",
         Icon = "all_inclusive",
         ImageSource = "Material",
