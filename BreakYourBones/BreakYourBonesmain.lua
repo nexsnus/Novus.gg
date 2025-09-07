@@ -186,6 +186,6 @@ local bybart = bybmt:CreateToggle({
     CurrentValue = false,
     Callback = function(state)
         runningRefine = state
-    	  if state then task.spawn(autoRefinelLoop) end
+    	  if state then task.spawn(autoRefineLoop) end
     end
 }, "bybart")
