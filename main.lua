@@ -35,19 +35,16 @@ local ut = Window:CreateTab({
         ShowTitle = true
 })
 
-local utaafkt = ut:CreateToggle({
+local utaafkt = ut:CreateButton({
         Name = "Anti Afk",
         Description = nil,
-        CurrentValue = false,
-        Callback = function(state)
-            while state == true do
-                local VirtualUser = game:GetService('VirtualUser')
+        Callback = function()
+            local VirtualUser = game:GetService('VirtualUser')
  
-                game:GetService('Players').LocalPlayer.Idled:Connect(function()
-                    VirtualUser:CaptureController()
-                    VirtualUser:ClickButton2(Vector2.new())
-                end)
-            end
+            game:GetService('Players').LocalPlayer.Idled:Connect(function()
+                VirtualUser:CaptureController()
+                VirtualUser:ClickButton2(Vector2.new())
+            end)
         end
 }, "utaafkt")
 
