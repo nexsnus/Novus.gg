@@ -24,7 +24,7 @@ local beraft = beraftm:CreateToggle({
             farmActive = true
             farmLoop = task.spawn(function()
                 while farmActive do
-                    for i = 1, 15 do
+                    for i = 1, 10 do
                         remote:FireServer(unpack(args))
                     end
                     task.wait(0.01)
