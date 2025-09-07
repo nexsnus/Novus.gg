@@ -13,23 +13,32 @@ local beraftm = Window:CreateTab({
 })
 
 local farmLoop
+local farmActive = false
 
 local beraft = beraftm:CreateToggle({
     Name = "Auto Farm",
     Description = nil,
     CurrentValue = false,
     Callback = function(state)
-      if state then
-        farmLoop = task.spawn(function()
-            while farmActive do
-                for i = 1, 5 do 
-                    remote:FireServer(unpack(args))
-                    remote:FireServer(unpack(args))
-                    remote:FireServer(unpack(args))
-                    remote:FireServer(unpack(args))
+        if state then
+            farmActive = true
+            farmLoop = task.spawn(function()
+                while farmActive do
+                    for i = 1, 5 do
+                        remote:FireServer(unpack(args))
+                        remote:FireServer(unpack(args))
+                        remote:FireServer(unpack(args))
+                        remote:FireServer(unpack(args))
+                    end
+                    task.wait(0.01)
                 end
-                task.wait(0.01)
+            end)
+        else
+            farmActive = false
+            if farmLoop then
+                task.cancel(farmLoop)
+                farmLoop = nil
             end
-        end)
+        end
     end
 }, "beraft")
