@@ -17,7 +17,7 @@ local farmActive = false
 
 local beraft = beraftm:CreateToggle({
     Name = "Auto Farm",
-    Description = nil,
+    Description = "Must hold Honey Dipper",
     CurrentValue = false,
     Callback = function(state)
         if state then
