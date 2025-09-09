@@ -131,6 +131,14 @@ local function autoDiscountedRefineLoop()
     end
 end
 
+local function autoRebirthLoop()
+    while runningRebirth do
+        if game:GetService("Workspace").Rebirthing.RebirthUI.BillboardGui.Important.Visible == true then
+            Remotes.Rebirth:FireServer()
+        end
+    end
+end
+
 local Window = _G.Window
 
 local bybmt = Window:CreateTab({
@@ -209,3 +217,13 @@ local bybadrt = bybmt:CreateToggle({
         if state then task.spawn(autoDiscountedRefineLoop) end
     end
 }, "bybadrt")
+
+local bybarbt = bybmt:CreateToggle({
+    Name = "Auto Rebirth",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+        runningRebirth = state
+        if state then task.spawn(autoRebirthLoop) end
+    end
+}, "bybarbt")
