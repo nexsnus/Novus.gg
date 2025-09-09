@@ -1,3 +1,5 @@
+local Window = _G.Window
+
 _G.ut = Window:CreateTab({
     Name = "Universal",
     Icon = "all_inclusive",
