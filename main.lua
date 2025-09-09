@@ -39,3 +39,5 @@ elseif game.PlaceId == 96601927506261 then
 else    
     Luna:Destroy()
 end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/Universal/Universalmain.lua"))()
