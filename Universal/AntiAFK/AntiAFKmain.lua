@@ -1,3 +1,4 @@
+local Window = _G.Window
 local ut = _G.ut
 
 local antiAfkEnabled = false
