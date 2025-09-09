@@ -121,6 +121,14 @@ local function autoRefineLoop()
     end
 end
 
+local function autoDiscountedRefineLoop()
+    while runningDiscountedRefine do
+        if game:GetService("Workspace").Refining.RefiningButton.BillboardGui.Discounted.visible == true do
+            Remotes.RefineRagdoll:FireServer()
+        end
+    end
+end
+
 local Window = _G.Window
 
 local bybmt = Window:CreateTab({
@@ -189,3 +197,13 @@ local bybart = bybmt:CreateToggle({
     	  if state then task.spawn(autoRefineLoop) end
     end
 }, "bybart")
+
+local bybadrt = bybmt:CreateToggle({
+    Name = "Auto Discounted Refine Ragdoll",
+    Description = nil,
+    CurrentValue = false,
+    Callback = function(state)
+        autoDiscountedRefineLoop = state
+    	  if state then task.spawn(autoDiscountedRefineLoop) end
+    end
+}, "bybadrt")
