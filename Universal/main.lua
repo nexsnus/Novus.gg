@@ -6,3 +6,5 @@ local ut = Window:CreateTab({
     ImageSource = "Material",
     ShowTitle = true
 })
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/Universal/AntiAFK/AntiAFKmain.lua"))()
