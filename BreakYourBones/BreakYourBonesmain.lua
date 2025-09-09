@@ -123,7 +123,7 @@ end
 
 local function autoDiscountedRefineLoop()
     while runningDiscountedRefine do
-        if game:GetService("Workspace").Refining.RefiningButton.BillboardGui.Discounted.visible == true do
+        if game:GetService("Workspace").Refining.RefiningButton.BillboardGui.Discounted.visible == true
             Remotes.RefineRagdoll:FireServer()
         end
     end
