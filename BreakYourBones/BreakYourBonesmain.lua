@@ -7,6 +7,7 @@ local runningAutofarm = false
 local runningUpgrade = false
 local runningNextRagdoll = false
 local runningRefine = false
+local runningDiscountedRefine = false
 local slamDuration = 20
 local slamVelocity = 100
 
@@ -123,9 +124,10 @@ end
 
 local function autoDiscountedRefineLoop()
     while runningDiscountedRefine do
-        if game:GetService("Workspace").Refining.RefiningButton.BillboardGui.Discounted.visible == true
+        if game:GetService("Workspace").Refining.RefiningButton.BillboardGui.Discounted.Visible == true then
             Remotes.RefineRagdoll:FireServer()
         end
+        task.wait(0.5)
     end
 end
 
@@ -144,7 +146,7 @@ local bybaft = bybmt:CreateToggle({
     CurrentValue = false,
     Callback = function(state)
         runningAutofarm = state
-    	  if state then task.spawn(autofarmLoop) end
+        if state then task.spawn(autofarmLoop) end
     end
 }, "bybaft")
 
@@ -153,9 +155,9 @@ local bybsds = bybmt:CreateSlider({
     Range = {5, 60},
     Increment = 1,
     CurrentValue = 20,
-        Callback = function(value)
-            slamDuration = value
-        end
+    Callback = function(value)
+        slamDuration = value
+    end
 }, "bybsds")
 
 local bybsvs = bybmt:CreateSlider({
@@ -163,9 +165,9 @@ local bybsvs = bybmt:CreateSlider({
     Range = {50, 500},
     Increment = 1,
     CurrentValue = 100,
-        Callback = function(value)
-            slamVelocity = value
-        end
+    Callback = function(value)
+        slamVelocity = value
+    end
 }, "bybsvs")
 
 local bybanrt = bybmt:CreateToggle({
@@ -174,7 +176,7 @@ local bybanrt = bybmt:CreateToggle({
     CurrentValue = false,
     Callback = function(state)
         runningNextRagdoll = state
-    	  if state then task.spawn(autoNextRagdollLoop) end
+        if state then task.spawn(autoNextRagdollLoop) end
     end
 }, "bybanrt")
 
@@ -184,7 +186,7 @@ local bybaut = bybmt:CreateToggle({
     CurrentValue = false,
     Callback = function(state)
         runningUpgrade = state
-    	  if state then task.spawn(autoUpgradeLoop) end
+        if state then task.spawn(autoUpgradeLoop) end
     end
 }, "bybaut")
 
@@ -194,7 +196,7 @@ local bybart = bybmt:CreateToggle({
     CurrentValue = false,
     Callback = function(state)
         runningRefine = state
-    	  if state then task.spawn(autoRefineLoop) end
+        if state then task.spawn(autoRefineLoop) end
     end
 }, "bybart")
 
@@ -204,6 +206,6 @@ local bybadrt = bybmt:CreateToggle({
     CurrentValue = false,
     Callback = function(state)
         runningDiscountedRefine = state
-    	  if state then task.spawn(autoDiscountedRefineLoop) end
+        if state then task.spawn(autoDiscountedRefineLoop) end
     end
 }, "bybadrt")
