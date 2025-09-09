@@ -203,7 +203,7 @@ local bybadrt = bybmt:CreateToggle({
     Description = nil,
     CurrentValue = false,
     Callback = function(state)
-        autoDiscountedRefineLoop = state
+        runningDiscountedRefine = state
     	  if state then task.spawn(autoDiscountedRefineLoop) end
     end
 }, "bybadrt")
