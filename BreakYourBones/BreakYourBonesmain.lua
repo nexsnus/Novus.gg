@@ -136,6 +136,7 @@ local function autoRebirthLoop()
         if game:GetService("Workspace").Rebirthing.RebirthUI.BillboardGui.Important.Visible == true then
             Remotes.Rebirth:FireServer()
         end
+        task.wait(0.5)
     end
 end
 
