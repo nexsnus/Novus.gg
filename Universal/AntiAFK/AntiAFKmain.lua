@@ -1,4 +1,4 @@
-_G.ut = local ut
+local ut = _G.ut
 
 local antiAfkEnabled = false
 local antiAfkConnection
