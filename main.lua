@@ -1,3 +1,4 @@
+repeat wait() until game:IsLoaded()
 _G.Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Snxdfer/back-ups-for-libs/refs/heads/main/Luna_Source.lua", true))()
 _G.Window = _G.Luna:CreateWindow({
     Name = "Novus Hub",
