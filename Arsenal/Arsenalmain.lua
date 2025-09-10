@@ -433,7 +433,7 @@ local asatsat = asat:CreateToggle({
   Flag = "asatsat",
   Callback = function(state)
     SilentAimEnabled = state
-    if state
+    if state then
       StartSilentAim()
     else
       StopSilentAim()
