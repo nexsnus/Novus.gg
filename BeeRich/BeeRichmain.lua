@@ -5,20 +5,15 @@ local args = {"ManualGather"}
 
 local Window = _G.Window
 
-local beraftm = Window:CreateTab({
-    Name = "Auto Farm",
-    Icon = "double_arrow",
-    ImageSource = "Material",
-    ShowTitle = true
-})
+local beraftm = Window:CreateTab("Automation", "house")
 
 local farmLoop
 local farmActive = false
 
 local beraft = beraftm:CreateToggle({
     Name = "Auto Farm",
-    Description = "Must hold Honey Dipper",
     CurrentValue = false,
+    Flag = "beraft",
     Callback = function(state)
         if state then
             farmActive = true
@@ -37,5 +32,5 @@ local beraft = beraftm:CreateToggle({
                 farmLoop = nil
             end
         end
-    end
-}, "beraft")
+    end,
+})
