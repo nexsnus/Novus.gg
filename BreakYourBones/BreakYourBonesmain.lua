@@ -142,89 +142,88 @@ end
 
 local Window = _G.Window
 
-local bybmt = Window:CreateTab({
-    Name = "Auto Farm",
-    Icon = "double_arrow",
-    ImageSource = "Material",
-    ShowTitle = true
-})
+local bybmt = Window:CreateTab("Automation", "house")
 
 local bybaft = bybmt:CreateToggle({
     Name = "Auto Slam",
-    Description = nil,
     CurrentValue = false,
+    Flag = "bybaft",
     Callback = function(state)
         runningAutofarm = state
         if state then task.spawn(autofarmLoop) end
-    end
-}, "bybaft")
+    end,
+})
 
 local bybsds = bybmt:CreateSlider({
     Name = "Slam Duration",
     Range = {5, 60},
     Increment = 1,
+    Suffix = "Seconds",
     CurrentValue = 20,
+    Flag = "bybsds",
     Callback = function(value)
         slamDuration = value
-    end
-}, "bybsds")
+    end,
+})
 
 local bybsvs = bybmt:CreateSlider({
     Name = "Slam Velocity",
     Range = {50, 500},
     Increment = 1,
+    Suffix = "Velocity",
     CurrentValue = 100,
+    Flag = "bybsvs",
     Callback = function(value)
         slamVelocity = value
-    end
-}, "bybsvs")
+    end,
+})
 
 local bybanrt = bybmt:CreateToggle({
     Name = "Auto Purchase Next Ragdoll",
-    Description = nil,
     CurrentValue = false,
+    Flag = "bybanrt",
     Callback = function(state)
         runningNextRagdoll = state
         if state then task.spawn(autoNextRagdollLoop) end
-    end
-}, "bybanrt")
+    end,
+})
 
 local bybaut = bybmt:CreateToggle({
     Name = "Auto Upgrade Bones",
-    Description = nil,
     CurrentValue = false,
+    Flag = "bybaut",
     Callback = function(state)
         runningUpgrade = state
         if state then task.spawn(autoUpgradeLoop) end
-    end
-}, "bybaut")
+    end,
+})
 
 local bybart = bybmt:CreateToggle({
     Name = "Auto Refine Ragdoll",
-    Description = nil,
     CurrentValue = false,
+    Flag = "bybart",
     Callback = function(state)
         runningRefine = state
         if state then task.spawn(autoRefineLoop) end
-    end
-}, "bybart")
+    end,
+})
 
 local bybadrt = bybmt:CreateToggle({
     Name = "Auto Discounted Refine Ragdoll",
-    Description = nil,
     CurrentValue = false,
+    Flag = "bybadrt",
     Callback = function(state)
         runningDiscountedRefine = state
         if state then task.spawn(autoDiscountedRefineLoop) end
-    end
-}, "bybadrt")
+    end,
+})
 
 local bybarbt = bybmt:CreateToggle({
     Name = "Auto Rebirth",
-    Description = nil,
     CurrentValue = false,
+    Flag = "bybarbt",
     Callback = function(state)
         runningRebirth = state
         if state then task.spawn(autoRebirthLoop) end
-    end
-}, "bybarbt")
+    end,
+})
