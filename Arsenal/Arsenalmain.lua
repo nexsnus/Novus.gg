@@ -11,7 +11,7 @@ local aabt = Window:CreateTab("Aimbot", "crosshair")
 local asat = Window:CreateTab("Silent Aim", "crosshair")
 local avt = Window:CreateTab("Visuals", "nfc")
 
-local Enabled = true
+local Enabled = false
 local FOV = 100
 local Smoothing = 0.1
 
@@ -21,8 +21,8 @@ local HitboxSize = 13
 local HitboxTransparency = 10
 
 
-local ShowFOVCircle = true
-local ShowESP = true
+local ShowFOVCircle = false
+local ShowESP = false
 local ESPColor = Color3.new(0, 1, 0)
 
 if not Drawing then
