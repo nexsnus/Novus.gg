@@ -21,7 +21,7 @@ spawn(function()
 end)
 
 local Window = _G.Window
-local tbtbaft = Window:CreateTab("Automation", "house")
+local tbtbaft = Window:CreateTab("Automation", "home")
 
 local tbaf = tbtbaft:CreateToggle({
     Name = "Auto Money",
