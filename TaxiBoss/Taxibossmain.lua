@@ -21,12 +21,7 @@ spawn(function()
 end)
 
 local Window = _G.Window
-local tbtbaft = Window:CreateTab({
-    Name = "Auto Farm",
-    Icon = "double_arrow",
-    ImageSource = "Material",
-    ShowTitle = true
-})
+local tbtbaft = Window:CreateTab("Automation", "house")
 
 local tbaf = tbtbaft:CreateToggle({
     Name = "Auto Money",
