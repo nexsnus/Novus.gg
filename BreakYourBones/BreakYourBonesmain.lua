@@ -142,7 +142,7 @@ end
 
 local Window = _G.Window
 
-local bybmt = Window:CreateTab("Automation", "house")
+local bybmt = Window:CreateTab("Automation", "home")
 
 local bybaft = bybmt:CreateToggle({
     Name = "Auto Slam",
