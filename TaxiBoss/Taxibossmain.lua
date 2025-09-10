@@ -62,7 +62,7 @@ local tbaf = tbtbaft:CreateToggle({
 
             game:GetService("ReplicatedStorage").Quests.Contracts.CompleteContract:InvokeServer()
         end
-    end
+    end,
 })
 
 local tbac = tbtbaft:CreateToggle({
@@ -262,7 +262,7 @@ local tbac = tbtbaft:CreateToggle({
                 end
             end)
         end
-    end
+    end,
 })
 
 local tbauo = tbtbaft:CreateToggle({
@@ -285,7 +285,7 @@ local tbauo = tbtbaft:CreateToggle({
                 game:GetService("ReplicatedStorage").Company.UpgradeOffice:InvokeServer()
             end
         end
-    end
+    end,
 })
 
 local tbmsc = Window:CreateTab("Miscellaneous", "blocks")
@@ -294,7 +294,7 @@ local tbutr = tbmsc:CreateButton({
     Name = "Unlock Taxi Radar",
     Callback = function()
         game:GetService("Players").LocalPlayer.variables.vip.Value = true
-    end
+    end,
 })
 
 local tbdg = tbmsc:CreateToggle({
@@ -310,5 +310,5 @@ local tbdg = tbmsc:CreateToggle({
                 seatPart.RotVelocity = Vector3.new(0, seatPart.RotVelocity.Y + 10, 0)
             end)
         end
-    end
+    end,
 })
