@@ -26,6 +26,7 @@ local tbtbaft = Window:CreateTab("Automation", "house")
 local tbaf = tbtbaft:CreateToggle({
     Name = "Auto Money",
     CurrentValue = false,
+    Flag = "tbaf",
     Callback = function(state)
         getfenv().autoMoney = state
 
@@ -62,11 +63,12 @@ local tbaf = tbtbaft:CreateToggle({
             game:GetService("ReplicatedStorage").Quests.Contracts.CompleteContract:InvokeServer()
         end
     end
-}, "tbaf")
+})
 
 local tbac = tbtbaft:CreateToggle({
     Name = "Auto Customer",
     CurrentValue = false,
+    Flag = "tbac",
     Callback = function(state)
         getfenv().autoCustomer = state
 
@@ -261,11 +263,12 @@ local tbac = tbtbaft:CreateToggle({
             end)
         end
     end
-}, "tbac")
+})
 
 local tbauo = tbtbaft:CreateToggle({
     Name = "Auto Upgrade Office",
     CurrentValue = false,
+    Flag = "tbauo",
     Callback = function(state)
         getfenv().autoOffice = state
 
@@ -283,14 +286,9 @@ local tbauo = tbtbaft:CreateToggle({
             end
         end
     end
-}, "tbauo")
-
-local tbmsc = Window:CreateTab({
-    Name = "Miscellaneous",
-    Icon = "extension",
-    ImageSource = "Material",
-    ShowTitle = true
 })
+
+local tbmsc = Window:CreateTab("Miscellaneous", "blocks")
 
 local tbutr = tbmsc:CreateButton({
     Name = "Unlock Taxi Radar",
@@ -302,6 +300,7 @@ local tbutr = tbmsc:CreateButton({
 local tbdg = tbmsc:CreateToggle({
     Name = "Donut GOD",
     CurrentValue = false,
+    Flag = "tbdg",
     Callback = function(state)
         getfenv().donut = state
         while getfenv().donut do
@@ -312,4 +311,4 @@ local tbdg = tbmsc:CreateToggle({
             end)
         end
     end
-}, "tbdg")
+})
