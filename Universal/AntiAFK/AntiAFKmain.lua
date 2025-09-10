@@ -6,7 +6,8 @@ local antiAfkConnection
 
 local utaafkt = ut:CreateToggle({
     Name = "Anti Afk",
-    Description = nil,
+    CurrentValue = false,
+    Flag = "utaafkt",
     Callback = function()
         if not antiAfkEnabled then
             antiAfkEnabled = true
@@ -23,4 +24,4 @@ local utaafkt = ut:CreateToggle({
             end
         end
     end
-}, "utaafkt")
+})
