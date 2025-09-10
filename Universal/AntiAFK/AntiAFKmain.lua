@@ -23,5 +23,5 @@ local utaafkt = ut:CreateToggle({
                 antiAfkConnection = nil
             end
         end
-    end
+    end,
 })
