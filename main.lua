@@ -39,15 +39,18 @@ _G.Window = _G.Rayfield:CreateWindow({
 
 if game.PlaceId == 7305309231 then
     repeat task.wait() until _G.Window
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/TaxiBoss/Taxibossmain.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/TaxiBoss/Taxibossmain.lua"))()
 elseif game.PlaceId == 123821081589134 then
     repeat task.wait() until _G.Window
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/BreakYourBones/BreakYourBonesmain.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/BreakYourBones/BreakYourBonesmain.lua"))()
 elseif game.PlaceId == 96601927506261 then
     repeat task.wait() until _G.Window
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/BeeRich/BeeRichmain.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/BeeRich/BeeRichmain.lua"))()
+elseif game.PlaceId == 286090429 then
+   repeat task.wait() until _G.Window
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Arsenal/Arsenalmain"))()
 else    
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/Universal/Universalmain.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Universal/Universalmain.lua"))()
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/Universal/Universalmain.lua"))()
