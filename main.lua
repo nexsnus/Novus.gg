@@ -1,30 +1,40 @@
 repeat wait() until game:IsLoaded()
-_G.Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Snxdfer/back-ups-for-libs/refs/heads/main/Luna_Source.lua", true))()
-_G.Window = _G.Luna:CreateWindow({
-    Name = "Novus Hub",
-    SubTitle = "by nexsnus", 
-    LogoID = "82795327169782", 
-    LoadingEnabled = true, 
-    LoadingTitle = "Novus Hub", 
-    LoadingSubtitle = "by nexsnus", 
-    ConfigSettings = {
-        RootFolder = nil, 
-        ConfigFolder = "Novus Hub"
-    },
-    KeySystem = false,
-    KeySettings = {
-        Title = "Luna Example Key",
-        Subtitle = "Key System",
-        Note = "Example",
-        SaveInRoot = false,
-        SaveKey = true,
-        Key = {"Example Key"},
-        SecondAction = {
-            Enabled = true,
-            Type = "Link",
-            Parameter = ""
-        }
-    }
+_G.Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+_G.Window = _G.Rayfield:CreateWindow({
+   Name = "Novus.gg",
+   Icon = 0,
+   LoadingTitle = "Novus.gg is loading",
+   LoadingSubtitle = "by nexsnus",
+   ShowText = "Novus.gg", 
+   Theme = "Default",
+
+   ToggleUIKeybind = "K",
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = "Novus.gg", 
+      FileName = "Novus.gg config"
+   },
+
+   Discord = {
+      Enabled = false, 
+      Invite = "noinvitelink", 
+      RememberJoins = true
+   },
+
+   KeySystem = false, 
+   KeySettings = {
+      Title = "Novus.gg Keyguard",
+      Subtitle = nil,
+      Note = "No method of obtaining the key is provided", 
+      FileName = "Key", 
+      SaveKey = true, 
+      GrabKeyFromSite = false, 
+      Key = {"Hello"} 
+   }
 })
 
 if game.PlaceId == 7305309231 then
