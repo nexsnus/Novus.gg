@@ -10,6 +10,7 @@ local Window = _G.Window
 local aabt = Window:CreateTab("Aimbot", "crosshair")
 local asat = Window:CreateTab("Silent Aim", "crosshair")
 local avt = Window:CreateTab("Visuals", "nfc")
+local agmt = Window:CreateTab("Gun Mods", "anvil")
 
 local Enabled = false
 local FOV = 100
@@ -526,3 +527,40 @@ end)
 Players.PlayerRemoving:Connect(function(player)
     RemoveESP(player)
 end)
+
+local agmtrgt = agmt:CreateToggle({
+        Name = "Rainbow Gun",
+        CurrentValue = false,
+        Flag = "agmtrgt",
+        Callback = function(state)
+            while state do
+                local c = 1
+                function zigzag(X)
+                 return math.acos(math.cos(X * math.pi)) / math.pi
+                end
+                game:GetService("RunService").RenderStepped:Connect(function()
+                 if game.Workspace.Camera:FindFirstChild('Arms') then
+                  for i,v in pairs(game.Workspace.Camera.Arms:GetDescendants()) do
+                   if v.ClassName == 'MeshPart' then 
+                    v.Color = Color3.fromHSV(zigzag(c),1,1)
+                    c = c + .0001
+                   end
+                  end
+                 end
+                end)
+            end
+        end,
+})
+
+local agmtiat = agmt:CreateToggle({
+        Name = "Infinite Ammo",
+        CurrentValue = false,
+        Flag = "agmtiat",
+        Callback = function(state)
+            while state do
+                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999
+                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
+                wait() 
+            end   
+        end,
+})
