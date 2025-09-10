@@ -5,7 +5,7 @@ local args = {"ManualGather"}
 
 local Window = _G.Window
 
-local beraftm = Window:CreateTab("Automation", "house")
+local beraftm = Window:CreateTab("Automation", "home")
 
 local farmLoop
 local farmActive = false
