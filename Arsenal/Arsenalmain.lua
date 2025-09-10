@@ -533,7 +533,7 @@ local agmtrgt = agmt:CreateToggle({
         CurrentValue = false,
         Flag = "agmtrgt",
         Callback = function(state)
-            while state do
+            if state == true then
                 local c = 1
                 function zigzag(X)
                  return math.acos(math.cos(X * math.pi)) / math.pi
