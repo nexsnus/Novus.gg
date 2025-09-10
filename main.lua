@@ -48,7 +48,7 @@ elseif game.PlaceId == 96601927506261 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/BeeRich/BeeRichmain.lua"))()
 elseif game.PlaceId == 286090429 then
    repeat task.wait() until _G.Window
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Arsenal/Arsenalmain"))()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Arsenal/Arsenalmain.lua"))()
 else    
     loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Universal/Universalmain.lua"))()
 end
