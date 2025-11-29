@@ -58,19 +58,30 @@ local function autofarmLoop()
         local char = plr.Character
         if not char then
             task.wait(1)
-        else
+        else            
             local hrp = char:FindFirstChild("HumanoidRootPart")
             local head = char:FindFirstChild("Head")
             local spawnFolder = workspace:FindFirstChild("Spawn")
             if hrp and head and spawnFolder then
-                local targetPart = workspace:GetChildren()[50]
+                local banane = workspace:GetChildren()[50]
+                local banane2 = banane.Ragdoll
+                local targetPart = nil
+                for _, v in ipairs(banane2:GetChildren()) do
+                    if v:IsA("Model") then
+                        local hrp2 = v:FindFirstChild("HumanoidRootPart")
+                        if hrp2 then
+                            targetPart = hrp2
+                        end
+                        break
+                    end
+                end
                 local teleportTarget = spawnFolder:GetChildren()[84]
                 if targetPart and teleportTarget then
                     fireRagdollTouch()
                     local startTime = tick()
                     while tick()-startTime < slamDuration and runningAutofarm do
                         if not (hrp and head and targetPart) then break end
-                        local direction = (targetPart.Ragdoll:GetChildren().HumanoidRootPart.Position - hrp.Position).Unit
+                        local direction = (targetPart.Position - hrp.Position).Unit
                         local velocity = direction * slamVelocity
                         for _, partName in pairs({"HumanoidRootPart","Head","Torso","Left Arm","Right Arm","Left Leg","Right Leg"}) do
                             local part = char:FindFirstChild(partName)
