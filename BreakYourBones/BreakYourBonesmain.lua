@@ -70,7 +70,7 @@ local function autofarmLoop()
                     local startTime = tick()
                     while tick()-startTime < slamDuration and runningAutofarm do
                         if not (hrp and head and targetPart) then break end
-                        local direction = (targetPart.Position - hrp.Position).Unit
+                        local direction = (targetPart.Ragdoll:GetChildren().HumanoidRootPart - hrp.Position).Unit
                         local velocity = direction * slamVelocity
                         for _, partName in pairs({"HumanoidRootPart","Head","Torso","Left Arm","Right Arm","Left Leg","Right Leg"}) do
                             local part = char:FindFirstChild(partName)
