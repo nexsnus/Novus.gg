@@ -63,7 +63,8 @@ local function autofarmLoop()
             local head = char:FindFirstChild("Head")
             local spawnFolder = workspace:FindFirstChild("Spawn")
             if hrp and head and spawnFolder then
-                local banane = workspace:GetChildren()[50]
+                local banane3 = game:GetService("Players").LocalPlayer.Character
+                local banane = workspace.banane3
                 local banane2 = banane.Ragdoll
                 local targetPart = nil
                 for _, v in ipairs(banane2:GetChildren()) do
