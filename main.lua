@@ -52,8 +52,6 @@ elseif game.PlaceId == 286090429 then
 elseif game.PlaceId == 5293755937 then
    repeat task.wait() until _G.Window
    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Speed%20Run%20Simulator/SpeedRunSimulatormain.lua"))()
-else    
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/Novus.gg/refs/heads/main/Universal/Universalmain.lua"))()
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/nexsnus/NovusHub/refs/heads/main/Universal/Universalmain.lua"))()
