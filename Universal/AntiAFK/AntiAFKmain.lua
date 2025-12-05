@@ -4,6 +4,7 @@ local ut = _G.ut
 local antiAfkEnabled = false
 local antiAfkConnection
 
+local utaafks = ut:CreateSection("AntiAFK")
 local utaafkt = ut:CreateToggle({
     Name = "Anti Afk",
     CurrentValue = false,
