@@ -41,7 +41,7 @@ local utactb = ut:CreateKeybind({
         HoldToInteract = false,
         Flag = "utactb",
         Callback = function()
-            if Enabled = true
+            if Enabled == true then
                 utact:Set(false)
             else
                 utact:Set(true)
