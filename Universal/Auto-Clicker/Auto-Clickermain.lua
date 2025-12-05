@@ -10,10 +10,12 @@ local Mouse = Player:GetMouse()
 local X, Y = 1700, 600
 local interval = 1
 
-while Enabled do
-      VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
-      VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
-      wait(interval)
+function banane()
+      while Enabled do
+            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
+            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
+            wait(interval)
+      end
 end
 
 local utacs = ut:CreateSection("Auto Clicker")
@@ -23,6 +25,7 @@ local utact = ut:CreateToggle({
     Flag = "utact",
     Callback = function(state)
         Enabled = state
+        banane()
     end,
 })
 local utacis = ut:CreateSlider({
@@ -43,5 +46,6 @@ local utactb = ut:CreateKeybind({
         Flag = "utactb",
         Callback = function()
             Enabled = true
+            banane()
         end,
 })
