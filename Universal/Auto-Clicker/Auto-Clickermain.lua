@@ -20,6 +20,7 @@ local utact = ut:CreateToggle({
             VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
             VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
             wait(interval)
+         end
     end,
 })
 local utacis = ut:CreateSlider({
