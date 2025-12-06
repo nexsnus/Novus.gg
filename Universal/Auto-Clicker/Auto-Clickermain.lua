@@ -55,7 +55,6 @@ local utacpb = ut:CreateButton({
     Callback = function()
         local function onMouseDown(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                local Mouse = Player:GetMouse()
                 X, Y = Mouse.X, Mouse.Y
                 if MouseDownConnection then
                     MouseDownConnection:Disconnect()
@@ -63,6 +62,8 @@ local utacpb = ut:CreateButton({
             end
         end
         local MouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
+        utacxcpg:Set({Title = "Current X-Coordinate", Content = X})
+        utacycpg:Set({Title = "Current Y-Coordinate", Content = Y})
     end,
 })
 local utacxcpg = ut:CreateParagraph({Title = "Current X-Coordinate", Content = X})
