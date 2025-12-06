@@ -59,8 +59,11 @@ local utacpb = ut:CreateButton({
         local function onMouseDown(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
                 X, Y = Mouse.X, Mouse.Y
-                utacxcpg:Set({Title = "Current X-Coordinate", Content = X})
-                utacycpg:Set({Title = "Current Y-Coordinate", Content = Y})
+                spawn(function()
+                    task.wait()
+                    utacxcpg:Set({Title = "Current X-Coordinate", Content = X})
+                    utacycpg:Set({Title = "Current Y-Coordinate", Content = Y})
+                end)
                 if mouseDownConnection then
                     mouseDownConnection:Disconnect()
                 end
