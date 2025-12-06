@@ -55,13 +55,14 @@ local utacpb = ut:CreateButton({
     Callback = function()
         local function onMouseDown(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                local mouse = Player:GetMouse()
-                X, Y = mouse.X, mouse.Y
-                print("Auto Clicker Position gesetzt auf:", X, Y)
-                UserInputService.InputEnded:Disconnect(mouseDownConnection)
+                local Mouse = Player:GetMouse()
+                X, Y = Mouse.X, Mouse.Y
+                if MouseDownConnection then
+                    MouseDownConnection:Disconnect()
+                end
             end
         end
-        local mouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
+        local MouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
     end,
 })
 local utacxcpg = ut:CreateParagraph({Title = "Current X-Coordinate", Content = X})
