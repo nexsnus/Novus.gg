@@ -48,3 +48,17 @@ local utactb = ut:CreateKeybind({
             end
         end,
 })
+local utacpb = ut:CreateButton({
+    Name = "Set Position on Click",
+    Callback = function()
+        local function onMouseDown(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                local mouse = Player:GetMouse()
+                X, Y = mouse.X, mouse.Y
+                print("Auto Clicker Position gesetzt auf:", X, Y)
+                UserInputService.InputEnded:Disconnect(mouseDownConnection)
+            end
+        end
+        local mouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
+    end,
+})
