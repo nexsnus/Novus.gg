@@ -9,6 +9,8 @@ local Enabled = false
 local Mouse = Player:GetMouse()
 local X, Y = 0, 0
 local interval = 1
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
 
 local utacs = ut:CreateSection("Auto Clicker")
 local utact = ut:CreateToggle({
