@@ -11,6 +11,8 @@ local Mouse = Player:GetMouse()
 local Enabled = false
 local X, Y = 0, 0
 local interval = 1
+local clickThread = nil
+local mouseDownConnection = nil
 
 local utacs = ut:CreateSection("Auto Clicker")
 
@@ -20,10 +22,19 @@ local utact = ut:CreateToggle({
     Flag = "utact",
     Callback = function(state)
         Enabled = state
-        while Enabled do
-            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
-            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
-            wait(interval)
+        if clickThread then
+            task.cancel(clickThread)
+            clickThread = nil
+        end
+        if Enabled then
+            clickThread = task.spawn(function()
+                while Enabled do
+                    VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
+                    task.wait(interval / 2)
+                    VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
+                    task.wait(interval / 2)
+                end
+            end)
         end
     end,
 })
@@ -56,19 +67,18 @@ local utacycpg = ut:CreateParagraph({Title = "Current Y-Coordinate", Content = Y
 local utacpb = ut:CreateButton({
     Name = "Set Position on Click",
     Callback = function()
+        if mouseDownConnection then
+            mouseDownConnection:Disconnect()
+        end
         local function onMouseDown(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
                 X, Y = Mouse.X, Mouse.Y
-                spawn(function()
-                    task.wait()
-                    utacxcpg:Set({Title = "Current X-Coordinate", Content = X})
-                    utacycpg:Set({Title = "Current Y-Coordinate", Content = Y})
-                end)
-                if mouseDownConnection then
-                    mouseDownConnection:Disconnect()
-                end
+                utacxcpg:Set({Title = "Current X-Coordinate", Content = X})
+                utacycpg:Set({Title = "Current Y-Coordinate", Content = Y})
+                mouseDownConnection:Disconnect()
+                mouseDownConnection = nil
             end
         end
-        local mouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
+        mouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
     end,
 })   
