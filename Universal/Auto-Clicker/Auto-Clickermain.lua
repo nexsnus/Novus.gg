@@ -62,3 +62,5 @@ local utacpb = ut:CreateButton({
         local mouseDownConnection = UserInputService.InputBegan:Connect(onMouseDown)
     end,
 })
+local utacxcpg = ut:CreateParagraph({Title = "Current X-Coordinate", Content = X})
+local utacycpg = ut:CreateParagraph({Title = "Current Y-Coordinate", Content = Y})
