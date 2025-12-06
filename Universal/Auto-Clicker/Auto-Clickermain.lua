@@ -7,7 +7,7 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 local Player = Players.LocalPlayer
 local Enabled = false
 local Mouse = Player:GetMouse()
-local X, Y = 1700, 600
+local X, Y = 0, 0
 local interval = 1
 
 local utacs = ut:CreateSection("Auto Clicker")
