@@ -4,7 +4,6 @@ local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 local banane = workspace.Gameplay.Dynamic.Bosses
 
 local Window = _G.Window
-
 local csxmat = Window:CreateTab("Automation", "home")
 
 local csxmatakbt = csxmat:CreateToggle({
@@ -12,17 +11,21 @@ local csxmatakbt = csxmat:CreateToggle({
     CurrentValue = false,
     Flag = "csxmatakbt",
     Callback = function(state)
-        while state do
-            task.wait(1) 
-            if #banane:GetChildren() > 0 then
-                for _, child in ipairs(banane:GetChildren()) do
-                    if child:IsA("BasePart") then
-                        humanoidRootPart.CFrame = child.CFrame
-                        task.wait(0.7) 
+        if state then
+            spawn(function()
+                while state do
+                    local children = banane:GetChildren()
+                    if #children > 0 then
+                        for _, boss in ipairs(children) do
+                            if boss:IsA("BasePart") then
+                                humanoidRootPart.CFrame = boss.CFrame
+                                task.wait(0.7)
+                            end
+                        end
                     end
+                    task.wait(0.5)
                 end
-                task.wait(0.5)
-            end
-        end   
+            end)
+        end
     end,
-})
+})   
