@@ -33,10 +33,10 @@ local csxmatakbt = csxmat:CreateToggle({
 local csxmmt = Window:CreateTab("Miscellaneous", "credit-card")
 local csxmmtguis = csxmmt:CreateSection("Guis")
 
-local cxsmmtogmt = cxsmmt:CreateToggle({
+local csxmmtogmt = csxmmt:CreateToggle({
         Name = "Open Gold Machine",
         CurrentValue = false,
-        Flag = "cxsmmtogmt",
+        Flag = "csxmmtogmt",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.GoldMachine.Enabled = true
@@ -45,10 +45,10 @@ local cxsmmtogmt = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtocmt = cxsmmt:CreateToggle({
+local csxmmtocmt = csxmmt:CreateToggle({
         Name = "Open Cosmic Machine",
         CurrentValue = false,
-        Flag = "cxsmmtocmt",
+        Flag = "csxmmtocmt",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.CosmicMachine.Enabled = true
@@ -57,10 +57,10 @@ local cxsmmtocmt = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtoctmt = cxsmmt:CreateToggle({
+local csxmmtoctmt = csxmmt:CreateToggle({
         Name = "Open Craft Machine",
         CurrentValue = false,
-        Flag = "cxsmmtoctmt",
+        Flag = "csxmmtoctmt",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.CraftMachine.Enabled = true
@@ -69,10 +69,10 @@ local cxsmmtoctmt = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtodct = cxsmmt:CreateToggle({
+local csxmmtodct = csxmmt:CreateToggle({
         Name = "Open Daycare",
         CurrentValue = false,
-        Flag = "cxsmmtodct",
+        Flag = "csxmmtodct",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.Daycare.Enabled = true
@@ -81,10 +81,10 @@ local cxsmmtodct = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtofmt = cxsmmt:CreateToggle({
+local csxmmtofmt = csxmmt:CreateToggle({
         Name = "Open Forge Machine",
         CurrentValue = false,
-        Flag = "cxsmmtofmt",
+        Flag = "csxmmtofmt",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.ForgeMachine.Enabled = true
@@ -93,10 +93,10 @@ local cxsmmtofmt = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtormt = cxsmmt:CreateToggle({
+local csxmmtormt = csxmmt:CreateToggle({
         Name = "Open Rainbow Machine",
         CurrentValue = false,
-        Flag = "cxsmmtormt",
+        Flag = "csxmmtormt",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.RainbowMachine.Enabled = true
@@ -105,10 +105,10 @@ local cxsmmtormt = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtopit = cxsmmt:CreateToggle({
+local csxmmtopit = csxmmt:CreateToggle({
         Name = "Open Pet Index",
         CurrentValue = false,
-        Flag = "cxsmmtopit",
+        Flag = "csxmmtopit",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.PetIndex.Enabled = true
@@ -117,10 +117,10 @@ local cxsmmtopit = cxsmmt:CreateToggle({
             end
         end,
 })
-local cxsmmtdrguit = cxsmmt:CreateToggle({
+local csxmmtdrguit = csxmmt:CreateToggle({
         Name = "Disable Rebirth Gui",
         CurrentValue = false,
-        Flag = "cxsmmtdrguit",
+        Flag = "csxmmtdrguit",
         Callback = function(state)
             if state then
                 game:GetService("Players").LocalPlayer.PlayerGui.Rebirth.Enabled = false
