@@ -18,9 +18,10 @@ local csxmatakbt = csxmat:CreateToggle({
                 for _, child in ipairs(banane:GetChildren()) do
                     if child:IsA("BasePart") then
                         humanoidRootPart.CFrame = child.CFrame
-                        task.wait(0.5) 
+                        task.wait(0.7) 
                     end
                 end
+                task.wait(0.5)
             end
         end   
     end,
