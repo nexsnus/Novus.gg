@@ -32,7 +32,7 @@ local csxmatakbt = csxmat:CreateToggle({
 
 local csxmmt = Window:CreateTab("Miscellaneous", "credit-card")
 
-local csxmmtguis = cxsmmt:CreateSection("Guis")
+local csxmmtguis = csxmmt:CreateSection("Guis")
 local cxsmmtogmt = cxsmmt:CreateToggle({
         Name = "Open Gold Machine",
         CurrentValue = false,
