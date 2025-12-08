@@ -560,3 +560,23 @@ local agmtiat = agmt:CreateToggle({
             end   
         end,
 })
+
+local banane = {}
+
+local agmtrft = agmt:CreateToggle({
+        Name = "Rapid Fire",
+        CurrentValue = false,
+        Flag = "agmtrft",
+        Callback = function(state)
+            for i, v in pairs(game.ReplicatedStorage.Weapons:GetDescendants()) do
+                if v.Name == "FireRate" then
+                    if state then
+                        banane[v] = v.Value
+                        v.Value = 0.01
+                    else
+                        v.Value = banane[v]
+                    end
+                end
+            end
+        end,
+})
