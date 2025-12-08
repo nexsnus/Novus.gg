@@ -562,6 +562,9 @@ local agmtiat = agmt:CreateToggle({
 })
 
 local banane = {}
+local banane2 = {}
+local banane3 = {}
+local banane4 = {}
 
 local agmtrft = agmt:CreateToggle({
         Name = "Rapid Fire",
@@ -577,6 +580,81 @@ local agmtrft = agmt:CreateToggle({
                         v.Value = banane[v]
                     end
                 end
+            end
+        end,
+})
+
+local agmtaat = agmt:CreateToggle({
+        Name = "Always Auto",
+        CurrentValue = false,
+        Flag = "agmtaat",
+        Callback = function(state)
+            for i, v in pairs(game.ReplicatedStorage.Weapons:GetChildren()) do
+                if v:FindFirstChild("Auto") then
+                    if state then
+                        v.Auto.Value = true
+                    else
+                        v.Auto.Value = banane2[v.Name].Auto
+                    end
+                end
+            end
+        end,
+})
+
+local agmtngst = agmt:CreateToggle({
+        Name = "No Gun Sway",
+        CurrentValue = false,
+        Flag = "agmtngst",
+        Callback = function(state)
+            game:GetService("Players").LocalPlayer.Settings.NoWeaponSway.Value = state
+        end,
+})
+
+local agmtnst = agmt:CreateToggle({
+        Name = "No Spread",
+        CurrentValue = false,
+        Flag = "agmtnst",
+        Callback = function(state)
+            for i, v in pairs(game.ReplicatedStorage.Weapons:GetDescendants()) do
+                if v.Name == "MaxSpread" or v.Name == "Spread" then
+                    if state then
+                        banane3[v] = v.Value
+                        v.Value = 0
+                    else
+                        v.Value = banane3[v]
+                    end
+                end
+            end
+        end,
+})
+
+local agmtnrt = agmt:CreateToggle({
+        Name = "No Recoil",
+        CurrentValue = false,
+        Flag = "agmtnrt",
+        Callback = function(state)
+            for i, v in pairs(game.ReplicatedStorage.Weapons:GetDescendants()) do
+                if v.Name == "RecoilControl" then
+                    if state then
+                        banane4[v] = v.Value
+                        v.Value = 0
+                    else
+                        v.Value = banane4[v]
+                    end
+                end
+            end
+        end,
+})
+
+local agmtswt = agmt:CreateToggle({
+        Name = "Silenced Weapons",
+        CurrentValue = false,
+        Flag = "agmtswt",
+        Callback = function(state)
+            if state then
+                game.SoundService.WeaponDischarge.Volume = 0
+            else
+                game.SoundService.WeaponDischarge.Volume = 0.5
             end
         end,
 })
