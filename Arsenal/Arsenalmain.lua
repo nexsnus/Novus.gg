@@ -553,10 +553,10 @@ local agmtiat = agmt:CreateToggle({
         CurrentValue = false,
         Flag = "agmtiat",
         Callback = function(state)
-            while state do
-                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999
-                game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
-                wait() 
+            if state then
+                game:GetService("ReplicatedStorage").wkspc.CurrentCurse.Value = "Infinite Ammo"
+            else
+                game:GetService("ReplicatedStorage").wkspc.CurrentCurse.Value = ""
             end   
         end,
 })
