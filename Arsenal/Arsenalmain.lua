@@ -7,8 +7,7 @@ local GuiService = game:GetService("GuiService")
 
 local Window = _G.Window
 
-local aabt = Window:CreateTab("Aimbot", "crosshair")
-local asat = Window:CreateTab("Silent Aim", "crosshair")
+local aabt = Window:CreateTab("Aiming", "crosshair")
 local avt = Window:CreateTab("Visuals", "nfc")
 local agmt = Window:CreateTab("Gun Mods", "anvil")
 
@@ -428,10 +427,10 @@ local aabtabt = aabt:CreateToggle({
   end,
 })
 
-local asatsat = asat:CreateToggle({
+local aabtsat = aabt:CreateToggle({
   Name = "Silent Aim",
   CurrentValue = "false",
-  Flag = "asatsat",
+  Flag = "aabtsat",
   Callback = function(state)
     SilentAimEnabled = state
     if state then
@@ -565,6 +564,7 @@ local banane = {}
 local banane2 = {}
 local banane3 = {}
 local banane4 = {}
+local banane5 = {}
 
 local agmtrft = agmt:CreateToggle({
         Name = "Rapid Fire",
@@ -655,6 +655,46 @@ local agmtswt = agmt:CreateToggle({
                 game.SoundService.WeaponDischarge.Volume = 0
             else
                 game.SoundService.WeaponDischarge.Volume = 0.5
+            end
+        end,
+})
+
+local agmtieqt = agmt:CreateToggle({
+        Name = "Instant Equip Weapons",
+        CurrentValue = false,
+        Flag = "agmtieqt",
+        Callback = function(state)
+            if state then
+              for i, v in pairs(game.ReplicatedStorage.Weapons:GetChildren()) do
+                if v:FindFirstChild("EquipTime") then
+                  banane5[v] = v.EquipTime.Value
+                   v.EquipTime.Value = 0.01
+                end
+              end
+            else
+              for i, v in pairs(game.ReplicatedStorage.Weapons:GetChildren()) do
+                if v:FindFirstChild("EquipTime") and banane5[v] then
+                  v.EquipTime.Value = banane5[v]
+                end
+              end
+            end
+        end,
+})
+
+local agmtirt = agmt:CreateToggle({
+        Name = "Instant Reload",
+        CurrentValue = false,
+        Flag = "agmtirt",
+        Callback = function(state)
+            if state then
+                for i, v in pairs(game:GetService("ReplicatedStorage").Weapons:GetChildren()) do
+                    if v:FindFirstChild("ReloadTime") then
+                        v.ReloadTime.Value = 0.01
+                    end
+                    if v:FindFirstChild("EReloadTime") then
+                        v.ReloadTime.Value = 0.01
+                    end
+                end
             end
         end,
 })
