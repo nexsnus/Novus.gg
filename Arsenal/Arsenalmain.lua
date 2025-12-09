@@ -12,7 +12,7 @@ local avt = Window:CreateTab("Visuals", "nfc")
 local agmt = Window:CreateTab("Gun Mods", "anvil")
 
 local Enabled = false
-local FOV = 100
+local FOV = 50
 local Smoothing = 0.1
 
 
@@ -475,10 +475,10 @@ local avtfovgs = avt:CreateSlider({
 
 local aabtsts = aabt:CreateSlider({
   Name = "Smoothing",
-  Range = {30, 100},
+  Range = {10, 100},
   Increment = 1,
   Suffix = "Smoothness",
-  CurrentValue = 30,
+  CurrentValue = 10,
   Flag = "aabtsts",
   Callback = function(value)
     Smoothing = value / 100
