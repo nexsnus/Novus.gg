@@ -594,7 +594,7 @@ local agmtaat = agmt:CreateToggle({
                     if state then
                         v.Auto.Value = true
                     else
-                        v.Auto.Value = false
+                        v.Auto.Value = banane2[v].Auto
                     end
                 end
             end
